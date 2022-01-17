@@ -1,15 +1,20 @@
-#Bibliotheken
-library(dplyr)
+#Bibliotheken ========
+library("dplyr")
 
 
-#Einlesen Daten
+#Einlesen Daten ==========
 df_kleinbasel <- read.csv("kleinbasel.csv") 
 
-# Berechnung ohne bisherige
+#Berechnungen ===============
+
+# Berechnung des Modell ohne bisherige
 df_kleinbasel_ohne <- filter(df_kleinbasel, bisher == F)
 relation_kleinbasel_ohne <- lm(veraenderte_SPListen ~ rang, data=df_kleinbasel_ohne)
+
+#Modell auf alle anwenden
 df_kleinbasel$korrekturwert <-  mean(predict(relation_kleinbasel_ohne,data.frame(rang = df_kleinbasel$rang))) - predict(relation_kleinbasel_ohne,data.frame(rang = df_kleinbasel$rang))
 df_kleinbasel$neuberechnung <- df_kleinbasel$korrekturwert + df_kleinbasel$Total_Stimmen
+
 df_kleinbasel <- arrange(df_kleinbasel,desc(Total_Stimmen))
 df_kleinbasel$reihenfolge_alt <- c(1:27)
 
