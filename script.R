@@ -3,7 +3,7 @@ library("dplyr")
 
 
 #Einlesen Daten ==========
-df_kleinbasel <- read.csv("kleinbasel.csv") 
+df_kleinbasel <- read.csv("https://raw.githubusercontent.com/socialthink/basel_wahlen/master/kleinbasel.csv")
 
 #Berechnungen ===============
 
