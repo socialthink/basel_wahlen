@@ -25,4 +25,4 @@ df_kleinbasel$reihenfolge_neu<- c(1:27)
 resultate <- cbind(df_kleinbasel$name,df_kleinbasel$Total_Stimmen,df_kleinbasel$korrekturwert,df_kleinbasel$neuberechnung,df_kleinbasel$reihenfolge_alt,df_kleinbasel$reihenfolge_neu)
 colnames(resultate) <- c("Name","Stimmen","Korrektur gemäss Modell","Stimmen korrigiert","Rang","Rang gemäss Modell")
 
-write.csv(resultate,file="resultate.csv")
+write.csv(resultate,file="resultate.csv",row.names=F)
